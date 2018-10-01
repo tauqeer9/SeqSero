@@ -9,12 +9,12 @@ import argparse,os,sys,time,random
 
 def check_deps(*tools):
   for exe in tools:
-    print "Checking if '"+exe+"' is installed...",
+    print >> sys.stderr, "Checking if '"+exe+"' is installed...",
     ec = os.system("which "+exe+" 1>/dev/null 2>/dev/null")
     if ec == 0:
-      print "OK"
+      print >> sys.stderr, "OK"
     else:
-      print "COULD NOT FIND - PLEASE INSTALL"
+      print >> sys.stderr, "COULD NOT FIND - PLEASE INSTALL"
       exit(2);
 
 def main():
