@@ -7,6 +7,16 @@
 
 import argparse,os,sys,time,random
 
+def check_deps(*tools):
+  for exe in tools:
+    print "Checking if '"+exe+"' is installed...",
+    ec = os.system("which "+exe+" 1>/dev/null 2>/dev/null")
+    if ec == 0:
+      print "OK"
+    else:
+      print "COULD NOT FIND - PLEASE INSTALL"
+      exit(2);
+
 def main():
   parser = argparse.ArgumentParser(usage='SeqSero.py -m <data_type> -i <input_data> [-d outdir] [-b <BWA_algorithm>]\n\nDevelopers: Shaokang Zhang (zskzsk@uga.edu) and Xiangyu Deng (xdeng@uga.edu)\n\nContact: seqsero@gmail.com')
   parser.add_argument('-V', action='version', version='%(prog)s 1.0.1')
@@ -19,6 +29,7 @@ def main():
   if len(sys.argv)==1:
     os.system(dirpath+"/SeqSero.py -h")
   else:
+    check_deps('bwa', 'samtools', 'isPcr', 'blastn', 'makeblastdb', 'fastq-dump')
     request_id = time.strftime("%m_%d_%Y_%H_%M_%S", time.localtime())
     request_id += str(random.randint(1, 10000000))
     make_dir=args.d
