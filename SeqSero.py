@@ -35,7 +35,7 @@ def main():
     make_dir=args.d
     if make_dir is None:
       make_dir="SeqSero_result_"+request_id
-    os.system("mkdir "+make_dir)
+    os.system("mkdir -p "+make_dir)
     os.system("cp -rf "+dirpath+"/database "+make_dir)
     mode_choice=args.m
     mapping_mode=args.b
