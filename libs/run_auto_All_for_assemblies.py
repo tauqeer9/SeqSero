@@ -214,7 +214,7 @@ def Test(file1,z,q):
   os.system("rm temp_result_"+str(q)+"*.txt")###01/28/2015
   os.system("rm result.txt")###01/28/2015
   #os.system("rm -rf database")###01/28/2015 
-  os.system("rm *.fasta *.xml *.fa")###01/28/2015
+  os.system("rm *.fasta *.fa *.fna *.fsa *.xml 2>/dev/null")###01/28/2015
 
     
 def main():
