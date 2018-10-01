@@ -15,7 +15,7 @@ import multiprocessing
 import string
 
 #m=string.atoi(sys.argv[1])
-m=1 #temperorily, m can be set as one, because we just need one core to deal with it
+m=1 #temporarily, m can be set as one, because we just need one core to deal with it
 file_name=sys.argv[1]
 
 def Combine(b,c):
