@@ -19,8 +19,8 @@ output=target.split('.')[0]+'_out.fasta'
 
 dirpath = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))###01/27/2015
 database_path="database"###01/27/2015,database_path=dirpath+"/database"
-os.system(dirpath+'/isPcr maxSize=3000 tileSize=7 minPerfect=7 minGood=7 '+target+' '+dirpath+'/../primers/seq_primer_fliC.txt '+target+'_fliC.fa')
-os.system(dirpath+'/isPcr maxSize=3000 tileSize=7 minPerfect=7 minGood=7 '+target+' '+dirpath+'/../primers/seq_primer_fljB.txt '+target+'_fljB.fa')
+os.system('isPcr maxSize=3000 tileSize=7 minPerfect=7 minGood=7 '+target+' '+dirpath+'/../primers/seq_primer_fliC.txt '+target+'_fliC.fa')
+os.system('isPcr maxSize=3000 tileSize=7 minPerfect=7 minGood=7 '+target+' '+dirpath+'/../primers/seq_primer_fljB.txt '+target+'_fljB.fa')
 fliC=target+'_fliC.fa'
 fljB=target+'_fljB.fa'
 
