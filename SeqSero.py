@@ -29,7 +29,7 @@ def main():
   if len(sys.argv)==1:
     os.system(dirpath+"/SeqSero.py -h")
   else:
-    check_deps('bwa', 'samtools', 'isPcr', 'blastn', 'makeblastdb', 'fastq-dump')
+    check_deps('bwa', 'samtools', 'isPcr', 'blastn', 'blastx', 'makeblastdb', 'fastq-dump')
     request_id = time.strftime("%m_%d_%Y_%H_%M_%S", time.localtime())
     request_id += str(random.randint(1, 10000000))
     make_dir=args.d
