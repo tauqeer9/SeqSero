@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #just an possible use, we can use it to replace H**.py, treat fliC and fljB as the target genes? 
 
 from __future__ import division
