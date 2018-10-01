@@ -320,14 +320,14 @@ if len(blast_record)==2:
             target_contig=contig
 
         rfb_region=target_contig[extract_start:extract_end]
-        print 'Extracted rfb region length:  '+str(len(rfb_region.seq.tostring()))+'\n'
+        print 'Extracted rfb region length:  '+str(len(str(rfb_region.seq)))+'\n'
         print 'Extracted rfb region saved in:  '+output+'\n'
 
         outfile=open(output,'w')
-        title='>'+target.split('.')[0]+' rfb region:'+blast_record[0].alignments[0].hit_def+':'+str(extract_start)+' to '+str(extract_end)+'_'+str(len(rfb_region.seq.tostring()))+'bp'+')'
+        title='>'+target.split('.')[0]+' rfb region:'+blast_record[0].alignments[0].hit_def+':'+str(extract_start)+' to '+str(extract_end)+'_'+str(len(str(rfb_region.seq)))+'bp'+')'
         outfile.write(title)  
         outfile.write('\n')
-        outfile.write(rfb_region.seq.tostring())
+        outfile.write(str(rfb_region.seq))
         outfile.close()
 
                
@@ -366,8 +366,8 @@ if len(blast_record)==2:
         outfile=open(output,'w')
         for contig in target_seq:
           if contig.description==blast_record[0].alignments[0].hit_def:
-            potentialsequence1=contig.seq[0:hit_1_start-1].tostring()
-            potentialsequence2=contig.seq[hit_1_end+1:].tostring()
+            potentialsequence1=str(contig.seq[0:hit_1_start-1])
+            potentialsequence2=str(contig.seq[hit_1_end+1:])
             title1='>'+target.split('.')[0]+' potential rfb region:'+blast_record[0].alignments[0].hit_def+':0 to '+str(hit_1_start-1)+'_total:'+str(len(potentialsequence1))+'bp'
             outfile.write(title1)  
             outfile.write('\n')
@@ -379,8 +379,8 @@ if len(blast_record)==2:
             outfile.write(potentialsequence2)
             outfile.write('\n')  
           elif contig.description==blast_record[1].alignments[0].hit_def:
-            potentialsequence1=contig.seq[0:hit_2_start-1].tostring()
-            potentialsequence2=contig.seq[hit_2_end+1:].tostring()
+            potentialsequence1=str(contig.seq[0:hit_2_start-1])
+            potentialsequence2=str(contig.seq[hit_2_end+1:])
             title1='>'+target.split('.')[0]+' potential rfb region:'+blast_record[1].alignments[0].hit_def+':0 to '+str(hit_2_start-1)+'_total:'+str(len(potentialsequence1))+'bp'
             outfile.write(title1)  
             outfile.write('\n')
@@ -415,11 +415,11 @@ if len(blast_record)==2:
         filecontent=list(filecontent)
         for contig in filecontent:
           if contig.description==realrecord1.query:
-            sequence=contig.seq.tostring()
+            sequence=str(contig.seq)
 
         for contig in filecontent:
           if contig.description==realrecord2.query:
-            sequence=sequence+contig.seq.tostring()
+            sequence=sequence+str(contig.seq)
 
         outfile=open('combined_sequence.fasta','w')
         outfile.write(title)
@@ -469,9 +469,9 @@ if len(blast_record)==2:
             buffer=hitstart
             hitstart=hitend
             hitend=buffer
-          potential1=contig.seq[0:hitstart-1].tostring()
+          potential1=str(contig.seq[0:hitstart-1])
           title1='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':0 to '+str(hitstart-1)+'_total:'+str(len(potential1))+'bp'
-          potential2=contig.seq[hitend+1:].tostring()
+          potential2=str(contig.seq[hitend+1:])
           title2='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':'+str(hitend+1)+' to contig end'+'_total:'+str(len(potential2))+'bp'
           aim_sequence=potential1
           title=title1
@@ -493,9 +493,9 @@ if len(blast_record)==2:
             buffer=hitstart
             hitstart=hitend
             hitend=buffer
-          potential1=contig.seq[0:hitstart-1].tostring()
+          potential1=str(contig.seq[0:hitstart-1])
           title1='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':0 to '+str(hitstart-1)+'_total:'+str(len(potential1))+'bp'
-          potential2=contig.seq[hitend+1:].tostring()
+          potential2=str(contig.seq[hitend+1:])
           title2='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':'+str(hitend+1)+' to contig end'+'_total:'+str(len(potential2))+'bp'
           aim_sequence=potential1
           outfile.write(title1)
@@ -531,11 +531,11 @@ if len(blast_record)==2:
             
     for contig in filecontent:
       if contig.description==realrecord1.query:
-        sequence=contig.seq.tostring()
+        sequence=str(contig.seq)
 
     for contig in filecontent:
       if contig.description==realrecord2.query:
-        sequence=sequence+contig.seq.tostring()
+        sequence=str(sequence+contig.seq)
          
 
     outfile=open('combined_sequence.fasta','w')
@@ -577,9 +577,9 @@ if len(blast_record)==2:
             buffer=hitstart
             hitstart=hitend
             hitend=buffer
-          potential1=contig.seq[0:hitstart-1].tostring()
+          potential1=str(contig.seq[0:hitstart-1])
           title1='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':0 to '+str(hitstart-1)+'_total:'+str(len(potential1))+'bp'
-          potential2=contig.seq[hitend+1:].tostring()
+          potential2=str(contig.seq[hitend+1:])
           title2='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':'+str(hitend+1)+' to contig end'+'_total:'+str(len(potential2))+'bp'
           aim_sequence=potential1
           outfile.write(title1)
@@ -601,9 +601,9 @@ if len(blast_record)==2:
             buffer=hitstart
             hitstart=hitend
             hitend=buffer
-          potential1=contig.seq[0:hitstart-1].tostring()
+          potential1=str(contig.seq[0:hitstart-1])
           title1='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':0 to '+str(hitstart-1)+'_total:'+str(len(potential1))+'bp'
-          potential2=contig.seq[hitend+1:].tostring()
+          potential2=str(contig.seq[hitend+1:])
           title2='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':'+str(hitend+1)+' to contig end'+'_total:'+str(len(potential2))+'bp'
           aim_sequence=potential1
           title=title1
@@ -637,11 +637,11 @@ if len(blast_record)==2:
             
     for contig in filecontent:
       if contig.description==realrecord1.query:
-        sequence=contig.seq.tostring()
+        sequence=str(contig.seq)
 
     for contig in filecontent:
       if contig.description==realrecord2.query:
-        sequence=sequence+contig.seq.tostring()
+        sequence=sequence+str(contig.seq)
          
 
     outfile=open('combined_sequence.fasta','w')
@@ -682,9 +682,9 @@ if len(blast_record)==2:
             buffer=hitstart
             hitstart=hitend
             hitend=buffer
-          potential1=contig.seq[0:hitstart-1].tostring()
+          potential1=str(contig.seq[0:hitstart-1])
           title1='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':0 to '+str(hitstart-1)+'_total:'+str(len(potential1))+'bp'
-          potential2=contig.seq[hitend+1:].tostring()
+          potential2=str(contig.seq[hitend+1:])
           title2='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':'+str(hitend+1)+' to contig end'+'_total:'+str(len(potential2))+'bp'
           aim_sequence=potential1
           title=title1
@@ -706,9 +706,9 @@ if len(blast_record)==2:
             buffer=hitstart
             hitstart=hitend
             hitend=buffer
-          potential1=contig.seq[0:hitstart-1].tostring()
+          potential1=str(contig.seq[0:hitstart-1])
           title1='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':0 to '+str(hitstart-1)+'_total:'+str(len(potential1))+'bp'
-          potential2=contig.seq[hitend+1:].tostring()
+          potential2=str(contig.seq[hitend+1:])
           title2='>'+target.split('.')[0]+' potential rfb region:'+alignment.hit_def+':'+str(hitend+1)+' to contig end'+'_total:'+str(len(potential2))+'bp'
           aim_sequence=potential1
           title=title1
@@ -742,11 +742,11 @@ if len(blast_record)==2:
             
     for contig in filecontent:
       if contig.description==realrecord1.query:
-        sequence=contig.seq.tostring()
+        sequence=str(contig.seq)
 
     for contig in filecontent:
       if contig.description==realrecord2.query:
-        sequence=sequence+contig.seq.tostring()
+        sequence=sequence+str(contig.seq)
          
 
     outfile=open('combined_sequence.fasta','w')
